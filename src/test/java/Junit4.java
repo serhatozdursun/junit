@@ -2,12 +2,7 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +16,7 @@ public class Junit4 extends Junit4Base {
 
     @Test
     public void assertEquals() {
-        Assert.assertNotEquals("Değerler eşitdeğil", 1, 1);
+        Assert.assertEquals("Değerler eşitdeğil", 1, 1);
         System.out.println("pass");
     }
 
@@ -130,56 +125,5 @@ public class Junit4 extends Junit4Base {
     public void test2() {
         System.out.println("Test 2");
     }
-
-    /*
-    Buradan aşağısı browser üzerinden yaptığımız örnekler. Yukarıdaki testlerin hızlı çalışması için tarayıcı ayağa kaldıran
-    kodları yorum satırına alıp kapattım bu sebepten aşağaıdaki kısımların çalışması için JunitBase sınıftaki yorum satırına
-    alınmış kodları açmanız gerekmekte.
-     */
-
-    @Test
-    public void lgnButtonTextCheck() {
-        String loginBtnText = driver.findElement(By.cssSelector(".sf-OldMyAccount-PhY-T")).getText();
-        Assert.assertEquals("Giriş Yap", loginBtnText);
-
-    }
-
-    @Test
-    public void lgnBtnIsEnabled() {
-        WebElement lgnBtn = driver.findElement(By.id("myAccount"));
-        Assert.assertTrue(lgnBtn.isEnabled());
-    }
-
-    @Test
-    public void assertRegisterButtonDisabled() throws InterruptedException {
-        driver.findElement(By.id("myAccount")).click();
-        driver.findElement(By.id("login")).click();
-        new WebDriverWait(driver, 15).until(
-                ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(),'Üye ol')]"))
-        ).click();
-        WebElement registerBtn = driver.findElement(By.id("btnSignUpSubmit"));
-        /*
-        Yukarıdaki kısımlara takılmayın selenium eğitiminde size bu kısımlar anlatılacak.
-        Burada asıl önemli nokta üye ol butonunu aktif olmadığını doğruluyoruz.
-        isEnabled() methodu eğer buton aktifse true dönüyor, o biz fals olmasını beklediğimiz için
-        assertFalse assertionı kullandık.
-        */
-        Assert.assertFalse(registerBtn.isEnabled());
-    }
-
-    @Test
-    public void assertSearchButton() {
-        String isEnabledBefore = driver.findElement(By.cssSelector(".desktopOldAutosuggestTheme-input")).getAttribute("value");
-        driver.findElement(By.cssSelector(".desktopOldAutosuggestTheme-input")).sendKeys("iphone");
-        String isEnabledAfter = driver.findElement(By.cssSelector(".desktopOldAutosuggestTheme-input")).getAttribute("value");
-        /*
-        Burda bir elementin o elemente yeni bir value atamadan önceki value bilgisini çektik daha sonra o elemente yeni bir velue
-        tanımlayıp değeri tekrar çektik. Sonuç olarak önceki ve sonraki değerlerin birbirinden farklı olmasını beklediğimiz için
-        assertNotEquals assertionı kullandık. Daha sonra elementteki değerin bizim gönderdiğimiz değerle aynı olup olmadığını doğruladık.
-         */
-        Assert.assertNotEquals(isEnabledAfter, isEnabledBefore);
-        Assert.assertEquals("iphone", isEnabledAfter);
-    }
-
 
 }

@@ -1,10 +1,9 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 
 public class Junit4Base {
 
@@ -15,7 +14,7 @@ public class Junit4Base {
      */
     @BeforeClass
     public static void beforeClass() {
-        System.out.println("Testler başladı");
+        System.out.println("BeforeClass Metodu Çalıştı");
     }
 
     /**
@@ -23,9 +22,7 @@ public class Junit4Base {
      */
     @Before
     public void before() {
-//        WebDriverManager.chromedriver().setup();
-//        driver = new ChromeDriver();
-//        driver.get("https://www.hepsiburada.com/");
+        System.out.println("Before Metodu Çalıştı ");
     }
 
     /**
@@ -33,11 +30,7 @@ public class Junit4Base {
      */
     @After
     public void after() {
-
-//        if (driver != null) {
-//            driver.close();
-//            driver.quit();
-//        }
+        System.out.println("After Metodu Çalıştı");
     }
 
     /**
@@ -45,6 +38,6 @@ public class Junit4Base {
      */
     @AfterClass
     public static void afterClass() {
-        System.out.println("Testler bitt");
+        System.out.println("AfterClass Metodu Çalıştı");
     }
 }

@@ -14,6 +14,7 @@ public class Junit5Base {
      */
     @BeforeAll
     public static void beforeAll() {
+        System.out.println("BeforeAll Metodu Çalıştı");
     }
 
     /**
@@ -21,9 +22,7 @@ public class Junit5Base {
      */
     @BeforeEach
     public void beforeEach() {
-//        WebDriverManager.chromedriver().setup();
-//        driver = new ChromeDriver();
-//        driver.get("https://www.hepsiburada.com/");
+        System.out.println("BeforeEach Metodu Çalıştı");
     }
 
     /**
@@ -31,11 +30,7 @@ public class Junit5Base {
      */
     @AfterEach
     public void afterEach() {
-
-//        if (driver != null) {
-//            driver.close();
-//            driver.quit();
-//        }
+        System.out.println("AfterEach Metodu Çalıştı");
     }
 
     /**
@@ -43,5 +38,6 @@ public class Junit5Base {
      */
     @AfterAll
     public static void afterAll() {
+        System.out.println("After Metodu Çalıştı");
     }
 }
